@@ -8,50 +8,56 @@
 
 @layer base {
   :root {
-    /* Core brand colors - converted to HSL */
-    --primary: 23 50% 28%; /* #614231 */
-    --primary-foreground: 43 37% 94%;
-    --primary-light: 23 40% 35%;
-    --primary-dark: 23 55% 20%;
+    /* Core brand colors - Muted professional tones */
+    --primary: 23 25% 32%; /* Softer brown */
+    --primary-foreground: 30 20% 96%;
+    --primary-light: 23 20% 40%;
+    --primary-dark: 23 30% 25%;
     
-    --secondary: 36 36% 45%; /* #9D784A */
+    --secondary: 36 25% 50%; /* Muted gold */
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 36 45% 55%;
+    --secondary-light: 36 30% 60%;
     
     /* Neutral colors */
-    --background: 43 37% 98%;
-    --foreground: 23 50% 15%;
+    --background: 30 15% 97%;
+    --foreground: 23 25% 18%;
     
-    --cream: 43 37% 94%;
-    --gold: 36 45% 55%;
-    --gold-light: 36 50% 65%;
+    --cream: 30 20% 95%;
+    --gold: 36 30% 50%;
+    --gold-light: 36 35% 62%;
     
     --card: 0 0% 100%;
-    --card-foreground: 23 50% 20%;
+    --card-foreground: 23 25% 22%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 23 50% 20%;
+    --popover-foreground: 23 25% 22%;
     
-    --muted: 43 20% 92%;
-    --muted-foreground: 23 20% 40%;
+    --muted: 30 15% 93%;
+    --muted-foreground: 23 15% 45%;
     
-    --accent: 36 36% 45%;
+    --accent: 36 25% 48%;
     --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 72% 51%;
+    --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 23 20% 88%;
-    --input: 23 20% 88%;
-    --ring: 23 50% 28%;
+    --border: 23 15% 90%;
+    --input: 23 15% 90%;
+    --ring: 23 25% 32%;
     
-    --radius: 0.75rem;
+    --radius: 1rem;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(23 50% 28%), hsl(36 36% 45%));
-    --gradient-secondary: linear-gradient(135deg, hsl(36 36% 45%), hsl(36 45% 55%));
-    --gradient-hero: linear-gradient(180deg, hsl(23 50% 28% / 0.9), hsl(23 50% 20% / 0.95));
-    --gradient-overlay: linear-gradient(180deg, transparent, hsl(23 50% 15% / 0.7));
+    /* Gradients - More subtle */
+    --gradient-primary: linear-gradient(135deg, hsl(23 25% 32%), hsl(36 25% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(36 25% 50%), hsl(36 30% 58%));
+    --gradient-hero: linear-gradient(180deg, hsl(23 25% 32% / 0.92), hsl(23 30% 25% / 0.95));
+    --gradient-overlay: linear-gradient(180deg, transparent, hsl(23 25% 18% / 0.6));
+    --gradient-elegant: linear-gradient(135deg, hsl(23 25% 32% / 0.05), hsl(36 25% 50% / 0.08));
+    
+    /* Animation durations */
+    --animation-slow: 0.8s;
+    --animation-normal: 0.4s;
+    --animation-fast: 0.2s;
   }
 }
 

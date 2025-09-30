@@ -19,14 +19,14 @@ const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md shadow-md z-50">
-      <div className="container mx-auto px-4">
+    <nav className="fixed top-4 left-4 right-4 bg-background/98 backdrop-blur-lg shadow-luxury rounded-2xl z-50 animate-slide-up">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-4 rtl:space-x-reverse">
-            <img src={logo} alt="Diwan Al Khaleej" className="h-14 w-14 object-contain" />
+          <div className="flex items-center space-x-4 rtl:space-x-reverse group">
+            <img src={logo} alt="Diwan Al Khaleej" className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110" />
             <div className="hidden md:block">
-              <h1 className="text-2xl font-kufi text-primary">
+              <h1 className="text-2xl font-kufi text-primary transition-colors duration-300">
                 {t('مؤسسة ديوان الخليج', 'Diwan Al Khaleej')}
               </h1>
               <p className="text-sm text-muted-foreground">
@@ -41,18 +41,21 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-lg font-medium transition-colors duration-300 hover:text-primary ${
-                  isActive(item.path) ? 'text-primary border-b-2 border-primary' : 'text-foreground'
+                className={`text-lg font-medium transition-all duration-300 relative group ${
+                  isActive(item.path) ? 'text-primary' : 'text-foreground hover:text-primary'
                 }`}
               >
                 {t(item.labelAr, item.labelEn)}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                  isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                }`} />
               </Link>
             ))}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-elegant hover:shadow-soft transition-all duration-300 hover:scale-105"
             >
-              <Globe className="w-5 h-5" />
+              <Globe className="w-5 h-5 animate-pulse-soft" />
               <span className="font-medium">{language === 'ar' ? 'EN' : 'AR'}</span>
             </button>
           </div>

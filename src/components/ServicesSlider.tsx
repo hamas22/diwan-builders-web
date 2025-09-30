@@ -55,7 +55,7 @@ const ServicesSlider: React.FC = () => {
   return (
     <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
-        <h2 className="section-title text-center mb-12">
+        <h2 className="section-title text-center mb-12 animate-fade-in">
           {t('خدماتنا', 'Our Services')}
         </h2>
         
@@ -67,24 +67,24 @@ const ServicesSlider: React.FC = () => {
             >
               {services.map((service) => (
                 <div key={service.id} className="w-full flex-shrink-0">
-                  <Card className="p-0 overflow-hidden shadow-elegant">
+                  <Card className="p-0 overflow-hidden shadow-luxury animate-glow rounded-2xl">
                     <div 
-                      className="h-64 md:h-96 bg-cover bg-center relative"
+                      className="h-64 md:h-96 bg-cover bg-center relative group"
                       style={{ backgroundImage: `url(${service.image})` }}
                     >
-                      <div className="absolute inset-0 bg-gradient-overlay" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                      <div className="absolute inset-0 bg-gradient-overlay transition-opacity duration-300 group-hover:opacity-90" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300 group-hover:translate-y-[-10px]">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-2 animate-slide-up">
                           {t(service.titleAr, service.titleEn)}
                         </h3>
-                        <p className="mb-4 text-white/90">
+                        <p className="mb-4 text-white/90 animate-fade-in">
                           {t(service.descriptionAr, service.descriptionEn)}
                         </p>
                         <Button 
                           variant="secondary"
-                          className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30"
+                          className="bg-white/15 backdrop-blur-lg hover:bg-white/25 text-white border border-white/20 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-luxury"
                         >
-                          <ExternalLink className="w-4 h-4 ml-2" />
+                          <ExternalLink className="w-4 h-4 ml-2 animate-pulse-soft" />
                           {t('شاهد أكثر', 'View More')}
                         </Button>
                       </div>
@@ -98,13 +98,13 @@ const ServicesSlider: React.FC = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 bg-primary text-white rounded-full p-3 hover:bg-primary-dark transition-colors shadow-lg"
+            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-12 bg-gradient-primary text-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-luxury animate-fade-in"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 bg-primary text-white rounded-full p-3 hover:bg-primary-dark transition-colors shadow-lg"
+            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-12 bg-gradient-primary text-white rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-luxury animate-fade-in"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

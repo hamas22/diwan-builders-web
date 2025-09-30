@@ -124,6 +124,34 @@ export default {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" }
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" }
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" }
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" }
+        },
+        "glow": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.1)" },
+          "50%": { boxShadow: "0 0 30px hsl(var(--primary) / 0.2)" }
+        },
+        "slide-up": {
+          "0%": { transform: "translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" }
+        },
+        "rotate-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" }
+        },
+        "bounce-soft": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -134,10 +162,19 @@ export default {
         "slide-in-left": "slide-in-left 0.5s ease-out",
         "scale-up": "scale-up 0.5s ease-out",
         "counter": "counter 2s ease-out",
+        "float": "float 3s ease-in-out infinite",
+        "pulse-soft": "pulse-soft 2s ease-in-out infinite",
+        "shimmer": "shimmer 3s linear infinite",
+        "glow": "glow 2s ease-in-out infinite",
+        "slide-up": "slide-up 0.6s ease-out",
+        "rotate-slow": "rotate-slow 20s linear infinite",
+        "bounce-soft": "bounce-soft 2s ease-in-out infinite"
       },
       boxShadow: {
-        'elegant': '0 10px 30px -10px hsl(var(--primary) / 0.3)',
-        'gold': '0 20px 40px -15px hsl(var(--gold) / 0.25)',
+        'elegant': '0 10px 30px -10px hsl(var(--primary) / 0.15)',
+        'gold': '0 20px 40px -15px hsl(var(--gold) / 0.18)',
+        'soft': '0 4px 20px hsl(var(--primary) / 0.08)',
+        'luxury': '0 15px 50px -10px hsl(var(--primary) / 0.12)',
       },
     },
   },

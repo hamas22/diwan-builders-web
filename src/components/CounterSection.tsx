@@ -55,7 +55,7 @@ const CounterItem: React.FC<CounterItemProps> = ({ target, label, suffix }) => {
 
   return (
     <div ref={ref} className="text-center animate-counter">
-      <div className="text-5xl md:text-6xl font-bold text-white mb-2">
+      <div className="text-5xl md:text-6xl font-bold text-white mb-2 animate-glow">
         {count}{suffix}
       </div>
       <p className="text-lg text-white/90">{label}</p>
