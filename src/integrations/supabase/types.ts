@@ -14,7 +14,370 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      about_sections: {
+        Row: {
+          content_ar: string
+          content_en: string
+          id: string
+          image_url: string | null
+          title_ar: string
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          content_ar: string
+          content_en: string
+          id?: string
+          image_url?: string | null
+          title_ar: string
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          content_ar?: string
+          content_en?: string
+          id?: string
+          image_url?: string | null
+          title_ar?: string
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      achievements: {
+        Row: {
+          icon: string | null
+          id: string
+          number: number
+          sort_order: number | null
+          title_ar: string
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          icon?: string | null
+          id?: string
+          number: number
+          sort_order?: number | null
+          title_ar: string
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          icon?: string | null
+          id?: string
+          number?: number
+          sort_order?: number | null
+          title_ar?: string
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      admin_users: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          password_hash: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          password_hash: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          password_hash?: string
+        }
+        Relationships: []
+      }
+      contact_info: {
+        Row: {
+          address_ar: string | null
+          address_en: string | null
+          email: string | null
+          facebook_url: string | null
+          id: string
+          instagram_url: string | null
+          map_url: string | null
+          phone1: string | null
+          phone2: string | null
+          tiktok_url: string | null
+          twitter_url: string | null
+          updated_at: string | null
+          working_hours_ar: string | null
+          working_hours_en: string | null
+        }
+        Insert: {
+          address_ar?: string | null
+          address_en?: string | null
+          email?: string | null
+          facebook_url?: string | null
+          id?: string
+          instagram_url?: string | null
+          map_url?: string | null
+          phone1?: string | null
+          phone2?: string | null
+          tiktok_url?: string | null
+          twitter_url?: string | null
+          updated_at?: string | null
+          working_hours_ar?: string | null
+          working_hours_en?: string | null
+        }
+        Update: {
+          address_ar?: string | null
+          address_en?: string | null
+          email?: string | null
+          facebook_url?: string | null
+          id?: string
+          instagram_url?: string | null
+          map_url?: string | null
+          phone1?: string | null
+          phone2?: string | null
+          tiktok_url?: string | null
+          twitter_url?: string | null
+          updated_at?: string | null
+          working_hours_ar?: string | null
+          working_hours_en?: string | null
+        }
+        Relationships: []
+      }
+      featured_projects: {
+        Row: {
+          description_ar: string | null
+          description_en: string | null
+          id: string
+          location_ar: string | null
+          location_en: string | null
+          main_image_url: string | null
+          sort_order: number | null
+          title_ar: string
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          description_ar?: string | null
+          description_en?: string | null
+          id?: string
+          location_ar?: string | null
+          location_en?: string | null
+          main_image_url?: string | null
+          sort_order?: number | null
+          title_ar: string
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          description_ar?: string | null
+          description_en?: string | null
+          id?: string
+          location_ar?: string | null
+          location_en?: string | null
+          main_image_url?: string | null
+          sort_order?: number | null
+          title_ar?: string
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      hero_sections: {
+        Row: {
+          button1_text_ar: string | null
+          button1_text_en: string | null
+          button2_text_ar: string | null
+          button2_text_en: string | null
+          id: string
+          image_url: string | null
+          title_ar: string
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          button1_text_ar?: string | null
+          button1_text_en?: string | null
+          button2_text_ar?: string | null
+          button2_text_en?: string | null
+          id?: string
+          image_url?: string | null
+          title_ar: string
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          button1_text_ar?: string | null
+          button1_text_en?: string | null
+          button2_text_ar?: string | null
+          button2_text_en?: string | null
+          id?: string
+          image_url?: string | null
+          title_ar?: string
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      project_images: {
+        Row: {
+          id: string
+          image_url: string
+          project_id: string | null
+          sort_order: number | null
+        }
+        Insert: {
+          id?: string
+          image_url: string
+          project_id?: string | null
+          sort_order?: number | null
+        }
+        Update: {
+          id?: string
+          image_url?: string
+          project_id?: string | null
+          sort_order?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_images_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "featured_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      service_images: {
+        Row: {
+          id: string
+          image_url: string
+          service_id: string | null
+          sort_order: number | null
+        }
+        Insert: {
+          id?: string
+          image_url: string
+          service_id?: string | null
+          sort_order?: number | null
+        }
+        Update: {
+          id?: string
+          image_url?: string
+          service_id?: string | null
+          sort_order?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_images_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          description_ar: string | null
+          description_en: string | null
+          id: string
+          image_url: string | null
+          sort_order: number | null
+          title_ar: string
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          description_ar?: string | null
+          description_en?: string | null
+          id?: string
+          image_url?: string | null
+          sort_order?: number | null
+          title_ar: string
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          description_ar?: string | null
+          description_en?: string | null
+          id?: string
+          image_url?: string | null
+          sort_order?: number | null
+          title_ar?: string
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          id: string
+          logo_url: string | null
+          primary_color: string | null
+          secondary_color: string | null
+          site_name_ar: string | null
+          site_name_en: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          logo_url?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          site_name_ar?: string | null
+          site_name_en?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          logo_url?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          site_name_ar?: string | null
+          site_name_en?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      vision_sections: {
+        Row: {
+          ceo_name_ar: string | null
+          ceo_name_en: string | null
+          content_ar: string
+          content_en: string
+          id: string
+          image_url: string | null
+          title_ar: string
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          ceo_name_ar?: string | null
+          ceo_name_en?: string | null
+          content_ar: string
+          content_en: string
+          id?: string
+          image_url?: string | null
+          title_ar: string
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          ceo_name_ar?: string | null
+          ceo_name_en?: string | null
+          content_ar?: string
+          content_en?: string
+          id?: string
+          image_url?: string | null
+          title_ar?: string
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
