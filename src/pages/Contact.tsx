@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook, Twitter } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import heroBg from '@/assets/hero-bg.jpg';
+import emailjs from 'emailjs-com';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
@@ -21,17 +22,41 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: t('تم الإرسال بنجاح', 'Sent Successfully'),
-      description: t('سنتواصل معك في أقرب وقت ممكن', 'We will contact you as soon as possible'),
-    });
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+
+    emailjs
+      .send(
+        "service_fyvejxu",   // ✅ Service ID من EmailJS
+        "template_swthfcg",  // ✅ Template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "C3M0YROcBqpbbk2iC"  // ✅ Public Key
+      )
+      .then(
+        () => {
+          toast({
+            title: t("تم الإرسال بنجاح", "Sent Successfully"),
+            description: t("سنتواصل معك في أقرب وقت ممكن", "We will contact you as soon as possible"),
+          });
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: ''
+          });
+        },
+        (error) => {
+          toast({
+            title: t("حدث خطأ", "Error Occurred"),
+            description: error.text,
+          });
+        }
+      );
   };
 
   const contactInfo = [
@@ -39,22 +64,22 @@ const Contact: React.FC = () => {
       icon: MapPin,
       titleAr: 'العنوان',
       titleEn: 'Address',
-      contentAr: 'قطر – شارع الفروسية، مبنى رقم 292 – الدور الأول مكتب 8',
-      contentEn: 'Qatar - Al Furousiya Street, Building No. 292 - First Floor Office 8'
+      contentAr: '..المنطقة الشرقية - الدمام',
+      contentEn: 'Eastern Province - Dammam..'
     },
     {
       icon: Phone,
       titleAr: 'الهاتف',
       titleEn: 'Phone',
-      contentAr: '+974 55664404 / +974 77776682',
-      contentEn: '+974 55664404 / +974 77776682'
+      contentAr: ' 0500912995+ / 966 500 912 995+',
+      contentEn: ' +0500912995 / +966 500 912 995'
     },
     {
       icon: Mail,
       titleAr: 'البريد الإلكتروني',
       titleEn: 'Email',
-      contentAr: 'info@aatgco.com',
-      contentEn: 'info@aatgco.com'
+      contentAr: 'diwan.alkhalij.est@gmail.com',
+      contentEn: 'diwan.alkhalij.est@gmail.com'
     },
     {
       icon: Clock,
@@ -95,7 +120,11 @@ const Contact: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {contactInfo.map((info, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-luxury transition-all duration-300 hover:-translate-y-1 animate-fade-in group" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card 
+                key={index} 
+                className="p-6 text-center hover:shadow-luxury transition-all duration-300 hover:-translate-y-1 animate-fade-in group" 
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <info.icon className="w-12 h-12 mx-auto mb-4 text-primary group-hover:animate-float" />
                 <h3 className="text-lg font-semibold mb-2">
                   {t(info.titleAr, info.titleEn)}
@@ -126,7 +155,6 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     required
-                    className="rounded-xl transition-all duration-300 focus:shadow-soft"
                   />
                   <Input
                     type="email"
@@ -134,7 +162,6 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
-                    className="rounded-xl transition-all duration-300 focus:shadow-soft"
                   />
                 </div>
                 
@@ -145,14 +172,12 @@ const Contact: React.FC = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     required
-                    className="rounded-xl transition-all duration-300 focus:shadow-soft"
                   />
                   <Input
                     placeholder={t('الموضوع', 'Subject')}
                     value={formData.subject}
                     onChange={(e) => setFormData({...formData, subject: e.target.value})}
                     required
-                    className="rounded-xl transition-all duration-300 focus:shadow-soft"
                   />
                 </div>
                 
@@ -162,12 +187,11 @@ const Contact: React.FC = () => {
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   required
                   rows={6}
-                  className="rounded-xl transition-all duration-300 focus:shadow-soft"
                 />
                 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-primary text-white font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-luxury hover:scale-105 flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-primary text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2"
                 >
                   <Send className="w-5 h-5 animate-pulse-soft" />
                   {t('إرسال الرسالة', 'Send Message')}
@@ -178,7 +202,7 @@ const Contact: React.FC = () => {
             {/* Map */}
             <Card className="p-0 overflow-hidden shadow-luxury animate-fade-in-up rounded-2xl" style={{ animationDelay: '0.2s' }}>
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.1234567890123!2d51.4444!3d25.2666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE2JzAwLjAiTiA1McKwMjYnNDAuMCJF!5e0!3m2!1sen!2sqa!4v1234567890123"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1728.3344559904951!2d50.1111792!3d26.4242269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fb927b7f9dd7%3A0xf333326a78a7ec22!2z2YXYpNiz2LPYqSDYr9mK2YjYp9mGINin2YTYrtmE2YrYrCDZhNmE2YXZgtin2YjZhNin2Kog2KfZhNi52KfZhdip!5e1!3m2!1sen!2seg!4v1759434395153!5m2!1sen!2seg"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '500px' }}
@@ -200,8 +224,8 @@ const Contact: React.FC = () => {
           
           <div className="flex justify-center gap-6 flex-wrap">
             {[
-              { icon: Instagram, name: 'Instagram', color: 'hover:text-pink-600', delay: '0.1s' },
-              { icon: Facebook, name: 'Facebook', color: 'hover:text-blue-600', delay: '0.2s' },
+              { icon: Instagram, name: 'Instagram', link: 'https://www.instagram.com/diwan.alkhalij.est/', color: 'hover:text-pink-600', delay: '0.1s' },
+              { icon: Facebook, name: 'Facebook', link: 'https://www.facebook.com/dywan.alkhlyj/', color: 'hover:text-blue-600', delay: '0.2s' },
               { 
                 icon: () => (
                   <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -209,14 +233,17 @@ const Contact: React.FC = () => {
                   </svg>
                 ), 
                 name: 'TikTok', 
+                link: 'https://www.tiktok.com/@diwan.alkhalij.est',
                 color: 'hover:text-black', 
                 delay: '0.3s' 
               },
-              { icon: Twitter, name: 'Twitter', color: 'hover:text-blue-400', delay: '0.4s' }
+              { icon: Twitter, name: 'Twitter', link: 'https://x.com/diwan_alkhalij?s=11&t=iFJQdqsULs2Lrf1zDVev2Q', color: 'hover:text-blue-400', delay: '0.4s' }
             ].map((social, index) => (
               <a
                 key={index}
-                href="#"
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`group p-4 bg-white rounded-xl shadow-soft transition-all duration-300 hover:shadow-luxury hover:-translate-y-1 animate-scale-up ${social.color}`}
                 style={{ animationDelay: social.delay }}
               >

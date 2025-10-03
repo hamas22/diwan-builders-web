@@ -3,6 +3,10 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import img1 from '@/assets/img1.png'
+import img2 from '@/assets/img2.png'
+import img3 from '@/assets/img3.png'
+
 
 interface Service {
   id: number;
@@ -24,7 +28,7 @@ const ServicesSlider: React.FC = () => {
       titleEn: 'Interior and Exterior Design',
       descriptionAr: 'نقدم تصاميم مبتكرة تجمع بين الجمال والوظيفة',
       descriptionEn: 'We provide innovative designs that combine beauty and functionality',
-      image: '/images/service1.jpg'
+      image: img1
     },
     {
       id: 2,
@@ -32,7 +36,7 @@ const ServicesSlider: React.FC = () => {
       titleEn: 'Construction and Building',
       descriptionAr: 'تنفيذ مشاريع البناء بأعلى معايير الجودة',
       descriptionEn: 'Executing construction projects with the highest quality standards',
-      image: '/images/service2.jpg'
+      image: img2
     },
     {
       id: 3,
@@ -40,7 +44,7 @@ const ServicesSlider: React.FC = () => {
       titleEn: 'Maintenance and Restoration',
       descriptionAr: 'خدمات صيانة شاملة وترميم احترافي',
       descriptionEn: 'Comprehensive maintenance services and professional restoration',
-      image: '/images/service3.jpg'
+      image: img3
     }
   ];
 
@@ -68,27 +72,31 @@ const ServicesSlider: React.FC = () => {
               {services.map((service) => (
                 <div key={service.id} className="w-full flex-shrink-0">
                   <Card className="p-0 overflow-hidden shadow-luxury animate-glow rounded-2xl">
-                    <div 
-                      className="h-64 md:h-96 bg-cover bg-center relative group"
-                      style={{ backgroundImage: `url(${service.image})` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-overlay transition-opacity duration-300 group-hover:opacity-90" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300 group-hover:translate-y-[-10px]">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-2 animate-slide-up">
-                          {t(service.titleAr, service.titleEn)}
-                        </h3>
-                        <p className="mb-4 text-white/90 animate-fade-in">
-                          {t(service.descriptionAr, service.descriptionEn)}
-                        </p>
-                        <Button 
-                          variant="secondary"
-                          className="bg-white/15 backdrop-blur-lg hover:bg-white/25 text-white border border-white/20 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-luxury"
-                        >
-                          <ExternalLink className="w-4 h-4 ml-2 animate-pulse-soft" />
-                          {t('شاهد أكثر', 'View More')}
-                        </Button>
-                      </div>
-                    </div>
+<div className="h-64 md:h-96 relative group">
+  <img 
+    src={service.image} 
+    alt={service.titleEn} 
+    className=" w-full h-[500px] object-cover rounded-xl" 
+  />
+  <div className="absolute inset-0 bg-gradient-overlay transition-opacity duration-300 group-hover:opacity-90" />
+  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300 group-hover:translate-y-[-10px]">
+    <h3 className="text-2xl md:text-3xl font-bold mb-2 animate-slide-up">
+      {t(service.titleAr, service.titleEn)}
+    </h3>
+    <p className="mb-4 text-white/90 animate-fade-in">
+      {t(service.descriptionAr, service.descriptionEn)}
+    </p>
+    <Button 
+      variant="secondary"
+      className="bg-white/15 backdrop-blur-lg hover:bg-white/25 text-white border border-white/20 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-luxury"
+    >
+      <ExternalLink className="w-4 h-4 ml-2 animate-pulse-soft" />
+      {t('شاهد أكثر', 'View More')}
+    </Button>
+  </div>
+</div>
+
+
                   </Card>
                 </div>
               ))}

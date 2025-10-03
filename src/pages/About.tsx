@@ -104,12 +104,16 @@ const About: React.FC = () => {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-gold transition-shadow duration-300">
-                <value.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">
+              <Card 
+                key={index} 
+                className="p-6 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:rotate-1 animate-fade-in-up cursor-pointer bg-white/80 backdrop-blur-lg border border-gold/30 rounded-2xl"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <value.icon className="w-14 h-14 mx-auto mb-4 text-primary animate-float" />
+                <h3 className="text-2xl font-bold mb-2 text-gradient-gold">
                   {t(value.titleAr, value.titleEn)}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   {t(value.descriptionAr, value.descriptionEn)}
                 </p>
               </Card>
@@ -122,8 +126,8 @@ const About: React.FC = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
-            <Card className="p-8">
-              <h2 className="text-3xl font-kufi mb-6 text-primary">
+            <Card className="p-8 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-rotate-1 animate-fade-in-up cursor-pointer bg-white/80 backdrop-blur-lg border border-gold/80 rounded-2xl">
+              <h2 className="text-3xl font-kufi mb-6 text-gradient-gold">
                 {t('رسالتنا', 'Our Mission')}
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
@@ -134,8 +138,8 @@ const About: React.FC = () => {
               </p>
             </Card>
             
-            <Card className="p-8">
-              <h2 className="text-3xl font-kufi mb-6 text-primary">
+            <Card className="p-8 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:rotate-1 animate-fade-in-up cursor-pointer bg-white/80 backdrop-blur-lg border border-gold/80 rounded-2xl">
+              <h2 className="text-3xl font-kufi mb-6 text-gradient-gold">
                 {t('رؤيتنا', 'Our Vision')}
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
