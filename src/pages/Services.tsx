@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Building, Paintbrush, Wrench, Home, Ruler, Shield } from 'lucide-react';
+import { Building, Wrench, Paintbrush, Home, Ruler, Shield } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 import service1 from '@/assets/service1.jpg';
 import project1 from '@/assets/project1.jpg';
@@ -24,80 +24,98 @@ const Services: React.FC = () => {
   const { t } = useLanguage();
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+
+  useEffect(() => {
+    const revealCards = () => {
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          setTimeout(() => {
+            setVisibleCards((prev) => [...prev, index]);
+          }, index * 150);
+        }
+      });
+    };
+    window.addEventListener('scroll', revealCards);
+    revealCards();
+    return () => window.removeEventListener('scroll', revealCards);
+  }, []);
 
   const services: Service[] = [
     {
       id: 1,
       icon: Building,
-      titleAr: 'أعمال البناء والتشييد',
-      titleEn: 'Construction and Building',
-      descriptionAr: 'تنفيذ مشاريع البناء الكاملة من الأساسات حتى التشطيبات',
-      descriptionEn: 'Executing complete construction projects from foundations to finishing',
-      detailsAr: 'نقدم خدمات البناء والتشييد الشاملة التي تشمل الأعمال الإنشائية، البناء، التشطيبات، وجميع الأعمال المتعلقة بالمشاريع السكنية والتجارية.',
-      detailsEn: 'We provide comprehensive construction and building services including structural works, construction, finishing, and all works related to residential and commercial projects.',
+      titleAr: 'أعمال التشييد والبناء',
+      titleEn: 'Construction Works',
+      descriptionAr: 'تنفيذ مشاريع البناء من الأساسات حتى التسليم بأعلى جودة.',
+      descriptionEn: 'Executing construction projects from foundation to delivery with top quality.',
+      detailsAr: 'نقدم كافة أعمال البناء للمشاريع السكنية والتجارية والصناعية مع استخدام أفضل المواد.',
+      detailsEn: 'We handle all construction works for residential, commercial, and industrial projects using premium materials.',
       images: [heroBg, aboutImage, project1]
     },
     {
       id: 2,
-      icon: Paintbrush,
-      titleAr: 'التصميم الداخلي والخارجي',
-      titleEn: 'Interior and Exterior Design',
-      descriptionAr: 'تصاميم عصرية تجمع بين الجمال والوظيفة',
-      descriptionEn: 'Modern designs that combine beauty and functionality',
-      detailsAr: 'فريقنا من المصممين المحترفين يقدم حلول تصميم مبتكرة للمساحات الداخلية والخارجية، مع مراعاة احتياجات العميل والميزانية المتاحة.',
-      detailsEn: 'Our team of professional designers provides innovative design solutions for interior and exterior spaces, taking into account client needs and available budget.',
-      images: [service1, project1, aboutImage]
+      icon: Wrench,
+      titleAr: 'الترميم',
+      titleEn: 'Renovation',
+      descriptionAr: 'ترميم وتجديد المباني القديمة لتبدو كالجديدة.',
+      descriptionEn: 'Renovating and restoring old buildings to look brand new.',
+      detailsAr: 'نقوم بأعمال الترميم الكامل والتقوية الإنشائية للمباني المتضررة أو القديمة.',
+      detailsEn: 'We provide full renovation and structural reinforcement for damaged or old buildings.',
+      images: [aboutImage, project1, service1]
     },
     {
       id: 3,
-      icon: Wrench,
-      titleAr: 'الصيانة والترميم',
-      titleEn: 'Maintenance and Restoration',
-      descriptionAr: 'خدمات صيانة دورية وترميم شامل للمباني',
-      descriptionEn: 'Periodic maintenance services and comprehensive building restoration',
-      detailsAr: 'نوفر خدمات الصيانة الدورية والطارئة، بالإضافة إلى أعمال الترميم الكاملة للمباني القديمة والتراثية.',
-      detailsEn: 'We provide periodic and emergency maintenance services, in addition to complete restoration works for old and heritage buildings.',
-      images: [aboutImage, heroBg, service1]
+      icon: Home,
+      titleAr: 'التشطيب العام',
+      titleEn: 'General Finishing',
+      descriptionAr: 'تشطيبات متكاملة بتصاميم أنيقة وجودة عالية.',
+      descriptionEn: 'Comprehensive finishing with elegant design and high quality.',
+      detailsAr: 'ننفذ جميع مراحل التشطيب من الأرضيات إلى الأسقف وفقًا لأحدث المعايير.',
+      detailsEn: 'We carry out all finishing stages from floors to ceilings with modern standards.',
+      images: [service1, heroBg, project1]
     },
     {
       id: 4,
-      icon: Home,
-      titleAr: 'المشاريع السكنية',
-      titleEn: 'Residential Projects',
-      descriptionAr: 'بناء وتطوير المجمعات والوحدات السكنية',
-      descriptionEn: 'Building and developing residential complexes and units',
-      detailsAr: 'متخصصون في تطوير المشاريع السكنية من الفلل الخاصة إلى المجمعات السكنية الكبيرة، مع التركيز على الجودة والراحة.',
-      detailsEn: 'Specialized in developing residential projects from private villas to large residential complexes, focusing on quality and comfort.',
-      images: [project1, service1, heroBg]
+      icon: Paintbrush,
+      titleAr: 'الدهانات والديكورات الجبسية',
+      titleEn: 'Painting & Gypsum Decor',
+      descriptionAr: 'تنفيذ أجمل التصاميم الجبسية والدهانات الفاخرة.',
+      descriptionEn: 'Executing luxurious paint and gypsum designs.',
+      detailsAr: 'نقدم ديكورات جبسية مميزة ودهانات عصرية تضيف لمسة فخامة لكل مساحة.',
+      detailsEn: 'We provide elegant gypsum decorations and modern paints that add luxury to every space.',
+      images: [heroBg, aboutImage, project1]
     },
     {
       id: 5,
       icon: Ruler,
-      titleAr: 'الاستشارات الهندسية',
-      titleEn: 'Engineering Consultancy',
-      descriptionAr: 'استشارات متخصصة في جميع مجالات البناء',
-      descriptionEn: 'Specialized consultancy in all construction fields',
-      detailsAr: 'نقدم استشارات هندسية شاملة تشمل التصميم، التخطيط، إدارة المشاريع، ودراسات الجدوى.',
-      detailsEn: 'We provide comprehensive engineering consultancy including design, planning, project management, and feasibility studies.',
-      images: [heroBg, project1, aboutImage]
+      titleAr: 'أعمال الرخام والسيراميك',
+      titleEn: 'Marble & Ceramic Works',
+      descriptionAr: 'تصميم وتركيب الرخام والسيراميك بدقة وأناقة.',
+      descriptionEn: 'Designing and installing marble and ceramic with precision and elegance.',
+      detailsAr: 'نوفر جميع أعمال الأرضيات والحوائط باستخدام أجود أنواع الرخام والسيراميك.',
+      detailsEn: 'We offer all flooring and wall works using high-quality marble and ceramic.',
+      images: [service1, aboutImage, project1]
     },
     {
       id: 6,
       icon: Shield,
-      titleAr: 'السلامة والجودة',
-      titleEn: 'Safety and Quality',
-      descriptionAr: 'التزام كامل بمعايير السلامة والجودة العالمية',
-      descriptionEn: 'Full commitment to international safety and quality standards',
-      detailsAr: 'نطبق أعلى معايير السلامة والجودة في جميع مشاريعنا، مع الحصول على الشهادات والاعتمادات اللازمة.',
-      detailsEn: 'We apply the highest safety and quality standards in all our projects, obtaining necessary certificates and accreditations.',
-      images: [aboutImage, service1, project1]
+      titleAr: 'الإشراف الهندسي',
+      titleEn: 'Engineering Supervision',
+      descriptionAr: 'إشراف هندسي دقيق لضمان تنفيذ المشروع بأعلى جودة.',
+      descriptionEn: 'Accurate engineering supervision to ensure top-quality project execution.',
+      detailsAr: 'يشرف مهندسونا المتخصصون على جميع مراحل التنفيذ لضمان الجودة والالتزام بالمواصفات.',
+      detailsEn: 'Our expert engineers supervise all execution phases to ensure quality and compliance.',
+      images: [project1, service1, heroBg]
     }
   ];
 
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative py-32"
         style={{
           backgroundImage: `linear-gradient(180deg, hsl(23 50% 28% / 0.85), hsl(36 36% 45% / 0.9)), url(${heroBg})`,
@@ -122,23 +140,27 @@ const Services: React.FC = () => {
       {/* Services Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <Card 
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card
                 key={service.id}
-                className="p-6 hover:shadow-gold transition-all duration-300 cursor-pointer group"
+                className={`service-card p-8 rounded-2xl border border-gray-200 backdrop-blur-sm bg-white/70 shadow-lg hover:shadow-2xl hover:shadow-amber-400/50 transition-all duration-500 cursor-pointer transform ${
+                  visibleCards.includes(index)
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : 'opacity-0 translate-y-10 scale-95'
+                }`}
                 onClick={() => setSelectedService(service)}
               >
-                <service.icon className="w-12 h-12 mb-4 text-primary group-hover:scale-110 transition-transform" />
-                <h3 className="text-xl font-semibold mb-3">
-                  {t(service.titleAr, service.titleEn)}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  {t(service.descriptionAr, service.descriptionEn)}
-                </p>
-                <span className="text-primary font-medium group-hover:underline">
-                  {t('شاهد أكثر ←', 'View More →')}
-                </span>
+                <div className="flex flex-col items-center text-center">
+                  <service.icon className="w-14 h-14 mb-5 text-amber-600 group-hover:scale-125 transition-transform duration-500" />
+                  <h3 className="text-2xl font-semibold mb-3 text-gray-800">
+                    {t(service.titleAr, service.titleEn)}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{t(service.descriptionAr, service.descriptionEn)}</p>
+                  <span className="text-amber-600 font-medium group-hover:underline transition-all">
+                    {t('شاهد أكثر ←', 'View More →')}
+                  </span>
+                </div>
               </Card>
             ))}
           </div>
@@ -153,13 +175,10 @@ const Services: React.FC = () => {
               {selectedService && t(selectedService.titleAr, selectedService.titleEn)}
             </DialogTitle>
           </DialogHeader>
-          
+
           {selectedService && (
             <div className="space-y-6">
-              <p className="text-lg text-muted-foreground">
-                {t(selectedService.detailsAr, selectedService.detailsEn)}
-              </p>
-              
+              <p className="text-lg text-muted-foreground">{t(selectedService.detailsAr, selectedService.detailsEn)}</p>
               <div className="grid grid-cols-3 gap-4">
                 {selectedService.images.map((image, index) => (
                   <img
@@ -179,13 +198,7 @@ const Services: React.FC = () => {
       {/* Image Lightbox */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-5xl p-0 overflow-hidden">
-          {selectedImage && (
-            <img 
-              src={selectedImage} 
-              alt="Full view" 
-              className="w-full h-auto"
-            />
-          )}
+          {selectedImage && <img src={selectedImage} alt="Full view" className="w-full h-auto" />}
         </DialogContent>
       </Dialog>
     </div>

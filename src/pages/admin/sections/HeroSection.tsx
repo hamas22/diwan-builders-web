@@ -92,7 +92,6 @@ export default function HeroSection() {
       };
 
       if (!heroData.id) {
-        // Insert أول مرة
         const { data: inserted, error } = await supabase
           .from('hero_sections')
           .insert([payload])
@@ -106,7 +105,6 @@ export default function HeroSection() {
         setOriginalHeroData(sanitized);
         toast({ title: t('تم إنشاء قسم الصفحة الرئيسية بنجاح', 'Hero section created') });
       } else {
-        // نحدّد التغييرات فقط
         const changes: any = {};
         Object.keys(payload).forEach((key) => {
           if ((payload as any)[key] !== (originalHeroData as any)?.[key]) {

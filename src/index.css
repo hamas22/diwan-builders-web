@@ -3,6 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&display=swap');
 
 /* Design System - Diwan Al Khaleej Brand Colors & Styles */
 
@@ -93,3 +96,10 @@
     @apply relative bg-fixed bg-cover bg-center min-h-[500px] flex items-center justify-center;
   }
 }
+
+@font-face {
+  font-family: 'EidFont';
+  src: url('./assets/arbfonts-eid341-2.svg') format('svg');
+}
+
+

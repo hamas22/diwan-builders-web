@@ -4,6 +4,7 @@ export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
+  
   theme: {
     container: {
       center: true,
@@ -56,10 +57,19 @@ export default {
           light: "hsl(var(--gold-light))",
         },
       },
+
+      // 🟢 هنا أضفنا الخطوط
       fontFamily: {
         'kufi': ['Noto Kufi Arabic', 'sans-serif'],
         'tajawal': ['Tajawal', 'sans-serif'],
+        'eid': ['EidFont', 'sans-serif'], // ← الخط الجديد
+          'cairo': ['Cairo', 'sans-serif'],
+            'reem': ['Reem Kufi Ink', 'sans-serif'],
+  'amiri': ['Amiri', 'serif'],
+  'aref': ['Aref Ruqaa Ink', 'serif'],
+
       },
+
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-secondary': 'var(--gradient-secondary)',
@@ -73,40 +83,20 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         "fade-in": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(20px)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)"
-          }
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
         },
         "fade-in-up": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(30px)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)"
-          }
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }
         },
         "slide-in-right": {
           "0%": { transform: "translateX(100%)" },
@@ -179,4 +169,5 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  
 } satisfies Config;
