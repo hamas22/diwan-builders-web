@@ -36,7 +36,7 @@ const Home: React.FC = () => {
 
         <div className="relative z-10 flex items-center h-full md:px-16" dir="ltr">
           <div className="w-full ">
-            <h1 className="font-kufi text-3xl md:text-5xl lg:text-6xl md:mt-[-100px] md:ml-[-150px] mr-40   font-bold text-white lg:mt-[-80px] max-w-5xl text-right" >
+            <h1 className="font-kufi text-3xl md:text-4xl lg:text-4xl md:mt-[-100px] md:ml-[-150px] lg:ml-[-400px] mr-40   font-bold text-white lg:mt-[-0px] max-w-5xl text-right" >
               {t('ديوان الخليج للمقاولات العامة', 'Diwan Al Khaleej General Contracting')}
             </h1>
 
