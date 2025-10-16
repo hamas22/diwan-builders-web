@@ -25,16 +25,17 @@ const Contact: React.FC = () => {
 
     emailjs
       .send(
-        "service_fyvejxu",   // ✅ Service ID من EmailJS
-        "template_swthfcg",  // ✅ Template ID
+        "service_fyvejxu",   
+        "template_swthfcg",  
         {
           name: formData.name,
-          email: formData.email,
+          email1: formData.email,
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
+          to_email: "mazntulib229@gmail.com",
         },
-        "C3M0YROcBqpbbk2iC"  // ✅ Public Key
+        "C3M0YROcBqpbbk2iC" 
       )
       .then(
         () => {

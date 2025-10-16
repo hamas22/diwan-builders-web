@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logoo.png";
 import emailjs from "emailjs-com";
+import { supabase } from "@/lib/supabaseClient"; // ✅ تأكدي من المسار
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -16,45 +17,72 @@ const Footer: React.FC = () => {
     phone: "",
     email: "",
     message: "",
+    image: null as File | null,
   });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
-    emailjs
-      .send(
+    try {
+      let imageUrl = "";
+
+      if (formData.image) {
+        const fileName = `${Date.now()}_${formData.image.name}`;
+        const { data, error } = await supabase.storage
+          .from("uploads") 
+          .upload(fileName, formData.image);
+
+        if (error) throw error;
+
+        const { data: publicUrlData } = supabase.storage
+          .from("uploads")
+          .getPublicUrl(fileName);
+
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      await emailjs.send(
         "service_fyvejxu", // ID الخدمة
         "template_qldbw3b", // ID التمبلت
         {
           name: formData.name,
           phone: formData.phone,
-          email: formData.email,
+          email1: formData.email,
           message: formData.message,
+          image_url: imageUrl || "No image uploaded",
         },
-        "C3M0YROcBqpbbk2iC" // الـ Public Key بتاعك
-      )
-      .then(
-        () => {
-          toast({
-            title: t("تم الإرسال بنجاح", "Sent Successfully"),
-            description: t("سنتواصل معك قريباً", "We will contact you soon"),
-          });
-          setFormData({ name: "", phone: "", email: "", message: "" });
-        },
-        (error) => {
-          toast({
-            title: t("حدث خطأ", "Error Occurred"),
-            description: error.text,
-          });
-        }
+        "C3M0YROcBqpbbk2iC" 
       );
+
+      toast({
+        title: t("تم الإرسال بنجاح", "Sent Successfully"),
+        description: t("سنتواصل معك قريباً", "We will contact you soon"),
+      });
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+        image: null,
+      });
+    } catch (error: any) {
+      toast({
+        title: t("حدث خطأ", "Error Occurred"),
+        description: error.message || "Upload failed",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <footer className="bg-gradient-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12">
-          {/* Quote Form - Right Side */}
+          {/* Form Section */}
           <div className="md:col-span-2 bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
             <h2 className="text-2xl md:text-3xl font-kufi mb-6 text-center">
               {t("لطلب عرض سعر لمشروعك", "Request a Quote for Your Project")}
@@ -82,7 +110,6 @@ const Footer: React.FC = () => {
                 />
               </div>
 
-              {/* Email Field */}
               <Input
                 type="email"
                 placeholder={t("البريد الإلكتروني", "Email")}
@@ -104,19 +131,32 @@ const Footer: React.FC = () => {
                 rows={4}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70 rounded-xl"
               />
+
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    image: e.target.files?.[0] || null,
+                  })
+                }
+                className="bg-white/10 border-white/20 text-white rounded-xl p-2 w-full"
+              />
+
               <Button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-3 flex items-center justify-center gap-2 rounded-xl transition-all duration-300 hover:scale-105"
               >
                 <Send className="w-5 h-5 animate-pulse-soft" />
-                {t("إرسال", "Submit")}
+                {loading ? t("جارٍ الإرسال...", "Sending...") : t("إرسال", "Submit")}
               </Button>
             </form>
           </div>
 
-          {/* Contact Info - Left Side */}
+          {/* Info Section */}
           <div className="md:col-span-2 space-y-6">
-            {/* Logo + Description */}
             <div className="flex items-center space-x-3 mb-4">
               <img src={logo} alt="Company Logo" className="h-12 w-auto" />
               <div>
@@ -139,7 +179,6 @@ const Footer: React.FC = () => {
               )}
             </p>
 
-            {/* Contact Info Grid */}
             <div className="grid sm:grid-cols-2 gap-6 mt-6 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1" />
@@ -180,7 +219,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-white/20 mt-12 pt-6 text-center text-sm opacity-80">
           <p>
             © 2025{" "}
