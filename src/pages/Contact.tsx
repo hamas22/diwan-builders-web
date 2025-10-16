@@ -65,9 +65,11 @@ const Contact: React.FC = () => {
       icon: MapPin,
       titleAr: 'العنوان',
       titleEn: 'Address',
-      contentAr: '..المنطقة الشرقية - الدمام',
-      contentEn: 'Eastern Province - Dammam..'
+      contentAr: 'المنطقة الشرقية - الدمام - حي مدينة العمال - شارع بلال بن رباح',
+      contentEn: 'Eastern Province - Dammam - Al-Omal District - Bilal Bin Rabah Street'
     },
+
+  
     {
       icon: Phone,
       titleAr: 'الهاتف',
