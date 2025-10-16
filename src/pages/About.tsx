@@ -76,17 +76,13 @@ const About: React.FC = () => {
                 {t('قصتنا', 'Our Story')}
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                {t(
-                  'تأسست مؤسسة ديوان الخليج للمقاولات العامة عام 2021 برؤية واضحة: أن نكون رائدين في مجال المقاولات والبناء في دولة قطر. منذ البداية، التزمنا بتقديم خدمات عالية الجودة تلبي وتتجاوز توقعات عملائنا.',
-                  'Diwan Al Khaleej General Contracting was established in 2010 with a clear vision: to be leaders in the field of contracting and construction in Qatar. From the beginning, we have been committed to providing high-quality services that meet and exceed our customers\' expectations.'
-                )}
-              </p>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                {t(
-                  'على مدار أكثر من 14 عامًا، نجحنا في تنفيذ مشاريع متنوعة شملت المباني السكنية والتجارية والمشاريع الحكومية، مما أكسبنا سمعة متميزة في السوق القطري.',
-                  'Over more than 14 years, we have successfully implemented various projects including residential and commercial buildings and government projects, earning us an excellent reputation in the Qatari market.'
-                )}
-              </p>
+  {t(
+    "تُعد مؤسسة ديوان الخليج للمقاولات العامة جهة متخصصة منذ عام 2021 في مجالات التشييد والترميم والتشطيب العام، إضافة إلى الدهانات والديكورات الجبسية وأعمال الرخام والسيراميك والإشراف الهندسي، نجحنا في تنفيذ مشاريع متنوعة شملت المباني السكنية والتجارية، مما أكسبنا سمعة متميزة في السوق السعودي.",
+    "Since 2021, Diwan Al Khaleej General Contracting has specialized in construction, renovation, and general finishing works, including painting, gypsum decorations, marble, ceramics, and engineering supervision. We have successfully completed diverse residential and commercial projects, earning an outstanding reputation in the Saudi market."
+  )}
+</p>
+
+              
             </div>
             <div className="animate-fade-in-right">
               <img

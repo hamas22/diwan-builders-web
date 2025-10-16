@@ -114,7 +114,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <CounterSection />
+      {/* <CounterSection /> */}
       <ServicesSlider />
 
       {/* Vision Section */}
@@ -218,9 +218,13 @@ const Home: React.FC = () => {
                 {t('أحد أفضل مشاريع شركتنا', 'One of Our Best Projects')}
               </h2>
               <div className="space-y-4 text-muted-foreground">
-                <p className="text-lg font-semibold">
-                  {t('المنطقة الشرقية - الدمام', 'Eastern Province - Dammam')}
-                </p>
+                <p>
+  {t(
+    "المنطقة الشرقية - الدمام - حي مدينة العمال - شارع بلال بن رباح",
+    "Eastern Province - Dammam - Al-Omal District - Bilal Bin Rabah Street"
+  )}
+</p>
+
                 <p className="leading-relaxed">
                   {t(
                     'يُعد هذا المشروع من أبرز إنجازاتنا التي تعكس التزامنا بالجودة والدقة في التنفيذ. استخدمنا فيه أحدث المواد والتقنيات لضمان مستوى متميز من المتانة والجمال.',

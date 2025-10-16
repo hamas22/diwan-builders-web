@@ -187,11 +187,12 @@ const Footer: React.FC = () => {
                     {t("العنوان", "Address")}
                   </h4>
                   <p>
-                    {t(
-                      "المنطقة الشرقية - الدمام...",
-                      "Eastern Province - Dammam.."
-                    )}
-                  </p>
+  {t(
+    "المنطقة الشرقية - الدمام - حي مدينة العمال - شارع بلال بن رباح",
+    "Eastern Province - Dammam - Al-Omal District - Bilal Bin Rabah Street"
+  )}
+</p>
+
                 </div>
               </div>
 
