@@ -3,9 +3,9 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import img1 from '@/assets/img1.png'
-import img2 from '@/assets/img2.png'
-import img3 from '@/assets/img3.png'
+import img1 from '@/assets/service1.jpg'
+import img2 from '@/assets/cera1.png'
+import img3 from '@/assets/revo1.png'
 
 
 interface Service {

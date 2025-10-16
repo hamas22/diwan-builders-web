@@ -10,6 +10,8 @@ import pro3 from '@/assets/pro3.png';
 import pro4 from '@/assets/pro4.png'; 
 import hero from '@/assets/home.jpg'; 
 import about from '@/assets/about-image.jpg'; 
+import mentor from '@/assets/mentor.png'; 
+
 
 import { Link } from "react-router-dom";
 
@@ -116,30 +118,86 @@ const Home: React.FC = () => {
       <ServicesSlider />
 
       {/* Vision Section */}
-      <section 
-        className="parallax-section py-20"
-        style={{
-          backgroundImage: `linear-gradient(180deg, hsl(23 50% 28% / 0.85), hsl(36 36% 45% / 0.9)), url(${pro1})`,
-          backgroundAttachment: 'fixed'
-        }}
-      >
-        <div className="container mx-auto px-4 flex justify-center items-center">
-          <div className="max-w-4xl bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-10 text-center text-white animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-kufi mb-6 text-yellow-300 drop-shadow-lg">
-              {t('رؤيتنا', 'Our Vision')}
-            </h2>
-            <p className="text-lg md:text-xl leading-relaxed mb-6">
-              {t(
-                'نسعى إلى الريادة في عالم المقاولات عبر تقديم حلول هندسية متكاملة ومستدامة، تجمع بين الجودة، الإبداع، والدقة في التنفيذ لنصنع مستقبلاً عمرانيًا يليق بوطننا.',
-                'We strive to lead the contracting world by offering integrated and sustainable engineering solutions that combine quality, creativity, and precision to build a better future.'
-              )}
-            </p>
-            <p className="text-xl font-semibold text-orange-300 mt-4">
-              {t('المدير التنفيذي: المهندس محمد سعيد الجدي', 'CEO: Engineer Mohamed Saeid Al Jadi')}
-            </p>
-          </div>
-        </div>
-      </section>
+<section
+  className="parallax-section py-24 relative overflow-hidden"
+  style={{
+    backgroundImage: `linear-gradient(180deg, hsl(23 50% 28% / 0.85), hsl(36 36% 45% / 0.9)), url(${pro1})`,
+    backgroundAttachment: "fixed",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+    <div
+      className="relative group flex justify-center md:justify-start w-full md:w-1/2"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <div className="absolute -inset-8 opacity-[25%] z-0 hidden sm:block">
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-600 via-orange-500 to-amber-400 rounded-full blur-2xl animate-spin-slower" />
+        <div className="absolute inset-0 bg-gradient-to-l from-amber-500 via-yellow-500 to-orange-500 rounded-full blur-2xl animate-pulse-slow opacity-50" />
+      </div>
+
+      <div className="relative w-72 h-72 sm:w-80 sm:h-80 flex items-end justify-center">
+        <div className="absolute inset-0 rounded-full border-4 border-white/20 z-0 group-hover:border-white/40 transition-all duration-700" />
+        <img
+          src={mentor}
+          alt="CEO"
+          className="relative z-10 w-[115%] h-[115%] object-cover rounded-full transform transition-all duration-700 group-hover:scale-[1.2] group-hover:rotate-2 origin-bottom"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <div
+      className="max-w-5xl bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-10 text-white animate-fade-in text-right ml-[200px]"
+      dir="rtl"
+      data-aos="fade-left"
+      data-aos-duration="1000"
+    >
+      <h2 className="text-4xl md:text-5xl font-kufi mb-6 text-yellow-300 drop-shadow-lg">
+        {t("رؤيتنا", "Our Vision")}
+      </h2>
+      <p className="text-lg md:text-xl leading-relaxed mb-6">
+        {t(
+          "نسعى إلى الريادة في عالم المقاولات عبر تقديم حلول هندسية متكاملة ومستدامة، تجمع بين الجودة، الإبداع، والدقة في التنفيذ لنصنع مستقبلاً عمرانيًا يليق بوطننا.",
+          "We strive to lead the contracting world by offering integrated and sustainable engineering solutions that combine quality, creativity, and precision to build a better future."
+        )}
+      </p>
+      <p className="text-xl font-semibold text-orange-300 mt-4">
+        {t(
+          "الرئيس التنفيذي: المهندس محمد سعيد الجدي",
+          "CEO: Engineer Mohamed Saeid Al Jadi"
+        )}
+      </p>
+    </div>
+  </div>
+
+  <style>{`
+    @keyframes spin-slower {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes pulse-slow {
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+    .animate-spin-slower {
+      animation: spin-slower 12s linear infinite;
+    }
+    .animate-pulse-slow {
+      animation: pulse-slow 4s ease-in-out infinite;
+    }
+  `}</style>
+</section>
+
+
 
       {/* Project Section */}
       <section className="py-20 bg-muted">

@@ -144,6 +144,7 @@ const About: React.FC = () => {
             </Card>
 
             <Card className="p-10 bg-white/85 backdrop-blur-md border border-amber-400/40 rounded-3xl shadow-lg hover:shadow-amber-400/60 transform transition-all duration-700 hover:scale-105 hover:-translate-y-2 animate-fade-in-up">
+            
               <h2 className="text-3xl font-kufi mb-6 text-amber-700">
                 {t('رؤيتنا', 'Our Vision')}
               </h2>
