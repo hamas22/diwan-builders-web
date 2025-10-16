@@ -128,6 +128,7 @@ const Home: React.FC = () => {
   }}
 >
   <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+    {/* الصورة */}
     <div
       className="relative group flex justify-center md:justify-start w-full md:w-1/2"
       data-aos="fade-up"
@@ -138,7 +139,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-l from-amber-500 via-yellow-500 to-orange-500 rounded-full blur-2xl animate-pulse-slow opacity-50" />
       </div>
 
-      <div className="relative w-72 h-72 sm:w-80 sm:h-80 flex items-end justify-center">
+      <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-end justify-center">
         <div className="absolute inset-0 rounded-full border-4 border-white/20 z-0 group-hover:border-white/40 transition-all duration-700" />
         <img
           src={mentor}
@@ -149,22 +150,23 @@ const Home: React.FC = () => {
       </div>
     </div>
 
+    {/* ديف الرؤية */}
     <div
-      className="max-w-5xl bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-10 text-white animate-fade-in text-right ml-[200px]"
+      className="max-w-5xl bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-10 text-white animate-fade-in text-right md:ml-[200px] w-full md:w-1/2"
       dir="rtl"
       data-aos="fade-left"
       data-aos-duration="1000"
     >
-      <h2 className="text-4xl md:text-5xl font-kufi mb-6 text-yellow-300 drop-shadow-lg">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-kufi mb-4 sm:mb-6 text-yellow-300 drop-shadow-lg text-center md:text-right">
         {t("رؤيتنا", "Our Vision")}
       </h2>
-      <p className="text-lg md:text-xl leading-relaxed mb-6">
+      <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6">
         {t(
           "نسعى إلى الريادة في عالم المقاولات عبر تقديم حلول هندسية متكاملة ومستدامة، تجمع بين الجودة، الإبداع، والدقة في التنفيذ لنصنع مستقبلاً عمرانيًا يليق بوطننا.",
           "We strive to lead the contracting world by offering integrated and sustainable engineering solutions that combine quality, creativity, and precision to build a better future."
         )}
       </p>
-      <p className="text-xl font-semibold text-orange-300 mt-4">
+      <p className="text-lg sm:text-xl font-semibold text-orange-300 mt-4 text-center md:text-right">
         {t(
           "الرئيس التنفيذي: المهندس محمد سعيد الجدي",
           "CEO: Engineer Mohamed Saeid Al Jadi"
@@ -180,13 +182,8 @@ const Home: React.FC = () => {
       }
     }
     @keyframes pulse-slow {
-      0%,
-      100% {
-        opacity: 0.3;
-      }
-      50% {
-        opacity: 0.6;
-      }
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
     }
     .animate-spin-slower {
       animation: spin-slower 12s linear infinite;
@@ -196,6 +193,7 @@ const Home: React.FC = () => {
     }
   `}</style>
 </section>
+
 
 
 
