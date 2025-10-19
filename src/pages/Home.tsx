@@ -8,8 +8,8 @@ import pro1 from '@/assets/pro1.png';
 import pro2 from '@/assets/pro2.png';
 import pro3 from '@/assets/pro3.png'; 
 import pro4 from '@/assets/pro4.png'; 
-import hero from '@/assets/hero10.png'; 
-import hero1 from '@/assets/hero20.png'; 
+import hero from '@/assets/final.png'; 
+import hero1 from '@/assets/final1.png'; 
 
 import about from '@/assets/about-image.jpg'; 
 import mentor from '@/assets/mentor.png'; 
@@ -28,7 +28,6 @@ const Home: React.FC = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
 <section className="relative h-[70vh] md:h-[80vh] lg:h-[100vh] overflow-hidden">
-  {/* الخلفية بدون overlay */}
   <div className="absolute inset-0">
     <img
       src={hero}
@@ -44,7 +43,6 @@ const Home: React.FC = () => {
       alt="Hero"
       className="w-full h-full object-cover object-center "
     />
-          <div className="absolute inset-0 bg-black/20"></div>
 
   </div>
 
@@ -52,17 +50,17 @@ const Home: React.FC = () => {
     <div className="relative flex items-center justify-start h-full md:px-16" dir="ltr">
     <div className="text-center">
       <h1
-        className={` z-10 relative lg:pl-20 inline-block font-kufi font-bold text-white transition-all duration-500  ${
+        className={` z-10 relative inline-block font-kufi font-bold text-white transition-all duration-500  ${
           lang === 'ar'
-            ? 'text-2xl md:text-3xl lg:text-5xl leading-snug'
-            : 'text-3xl md:text-4xl lg:text-4xl leading-tight'
+            ? 'text-[20px] md:text-3xl lg:text-[50px] leading-snug'
+            : 'text-1xl md:text-4xl lg:text-4xl leading-tight'
         }`}
       >
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[150px] bg-[#c97f23] -z-20"></span>
 
         {t('ديوان الخليج للمقاولات العامة', 'Diwan Al Khaleej General Contracting')}
       </h1>
-      <div className="flex flex-col md:flex-row gap-4 mt-20 lg:mt-[220px] items-center justify-center z-50 relative">
+      <div className="flex flex-col md:flex-row gap-4 mt-20 lg:mt-[220px] items-center justify-center z-40 relative">
         <Link to="/about">
           <Button
             className="px-8 lg:px-12 py-4 lg:py-5 text-lg lg:text-xl bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-full shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-500 ease-in-out flex items-center gap-2"
