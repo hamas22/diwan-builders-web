@@ -133,16 +133,17 @@ const Footer: React.FC = () => {
               />
 
               <input
-                type="file"
-                accept="image/*"
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    image: e.target.files?.[0] || null,
-                  })
-                }
-                className="bg-white/10 border-white/20 text-white rounded-xl p-2 w-full"
-              />
+  type="file"
+  accept="image/*,application/pdf"
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      image: e.target.files?.[0] || null,
+    })
+  }
+  className="bg-white/10 border-white/20 text-white rounded-xl p-2 w-full"
+/>
+
 
               <Button
                 type="submit"
@@ -165,8 +166,8 @@ const Footer: React.FC = () => {
                 </h3>
                 <p className="text-sm opacity-80">
                   {t(
-                    "للمقاولات العامة - أكثر من 14 عاماً من الخبرة",
-                    "General Contracting - 14+ Years of Excellence"
+                    "للمقاولات العامة - تأسست منذ عام 2021",
+                    "General Contracting - Founded in 2021"
                   )}
                 </p>
               </div>

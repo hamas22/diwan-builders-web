@@ -8,7 +8,9 @@ import pro1 from '@/assets/pro1.png';
 import pro2 from '@/assets/pro2.png';
 import pro3 from '@/assets/pro3.png'; 
 import pro4 from '@/assets/pro4.png'; 
-import hero from '@/assets/home.jpg'; 
+import hero from '@/assets/hero10.png'; 
+import hero1 from '@/assets/hero20.png'; 
+
 import about from '@/assets/about-image.jpg'; 
 import mentor from '@/assets/mentor.png'; 
 
@@ -25,62 +27,80 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[70vh] md:h-[80vh] lg:h-[100vh] overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <img
-            src={hero}
-            alt="Hero"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
-
-        <div className="relative z-10 flex items-center h-full md:px-16" dir="ltr">
-          <div className="w-full ">
-<h1
-  className={`font-kufi font-bold text-white max-w-5xl text-right transition-all duration-500 ${
-    lang === 'ar'
-      ? 'text-5xl md:text-6xl lg:text-5xl leading-snug'
-      : 'text-3xl md:text-4xl lg:text-4xl leading-tight'
-  } md:mt-[-100px] md:ml-[-150px] lg:ml-[-300px] mr-40 lg:mt-[0px]`}
->
-  {t('ديوان الخليج للمقاولات العامة', 'Diwan Al Khaleej General Contracting')}
-</h1>
+<section className="relative h-[70vh] md:h-[80vh] lg:h-[100vh] overflow-hidden">
+  {/* الخلفية بدون overlay */}
+  <div className="absolute inset-0">
+    <img
+      src={hero}
+      alt="Hero"
+      className="w-full h-full object-cover object-center z-0 "
+    />
+  </div>
 
 
-            <div className="flex flex-col md:flex-row gap-4 mt-20 lg:mt-[220px] items-start">
-              <Link to="/about">
-                <Button
-                  className="px-8 lg:px-12 py-4 lg:py-5 text-lg lg:text-xl bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-full shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-500 ease-in-out flex items-center gap-2"
-                >
-                  <ArrowDown className="w-6 h-6 lg:w-7 lg:h-7 animate-bounce" />
-                  {t('من نحن', 'About us')}
-                </Button>
-              </Link>
+    <div className="absolute inset-0 z-30">
+    <img
+      src={hero1}
+      alt="Hero"
+      className="w-full h-full object-cover object-center "
+    />
+          <div className="absolute inset-0 bg-black/20"></div>
 
-              <Link to="/contact">
-                <Button
-                  className="px-8 lg:px-12 py-4 lg:py-5 text-lg lg:text-xl border-2 border-red-950 text-red-950 rounded-full shadow-lg bg-transparent hover:bg-gradient-to-r hover:from-orange-500 hover:to-white-500 hover:text-white hover:scale-110 hover:shadow-2xl transition-all duration-500 ease-in-out flex items-center gap-2"
-                >
-                  <Phone className="w-6 h-6 lg:w-7 lg:h-7 transition-transform duration-500 group-hover:rotate-12" />
-                  {t('اتصل الآن', 'Call Now')}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+  </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-          <button
-            onClick={() => scrollToSection('about-preview')}
-            className="text-white hover:text-white/80 transition-colors"
+
+    <div className="relative flex items-center justify-start h-full md:px-16" dir="ltr">
+    <div className="text-center">
+      <h1
+        className={` z-10 relative lg:pl-20 inline-block font-kufi font-bold text-white transition-all duration-500  ${
+          lang === 'ar'
+            ? 'text-2xl md:text-3xl lg:text-5xl leading-snug'
+            : 'text-3xl md:text-4xl lg:text-4xl leading-tight'
+        }`}
+      >
+        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[150px] bg-[#c97f23] -z-20"></span>
+
+        {t('ديوان الخليج للمقاولات العامة', 'Diwan Al Khaleej General Contracting')}
+      </h1>
+      <div className="flex flex-col md:flex-row gap-4 mt-20 lg:mt-[220px] items-center justify-center z-50 relative">
+        <Link to="/about">
+          <Button
+            className="px-8 lg:px-12 py-4 lg:py-5 text-lg lg:text-xl bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-full shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-500 ease-in-out flex items-center gap-2"
           >
-            <ArrowDown className="w-8 h-8" />
-          </button>
-        </div>
-      </section>
+            <ArrowDown className="w-6 h-6 lg:w-7 lg:h-7 animate-bounce" />
+            {t('من نحن', 'About us')}
+          </Button>
+        </Link>
+
+        <Link to="/contact">
+          <Button
+            className="px-8 lg:px-12 py-4 lg:py-5 text-lg lg:text-xl border-2 border-white-950 text-white rounded-full shadow-lg bg-transparent hover:bg-gradient-to-r hover:from-orange-500 hover:to-white-500 hover:text-white hover:scale-110 hover:shadow-2xl transition-all duration-500 ease-in-out flex items-center gap-2"
+          >
+            <Phone className="w-6 h-6 lg:w-7 lg:h-7 transition-transform duration-500 group-hover:rotate-12" />
+            {t('اتصل الآن', 'Call Now')}
+          </Button>
+        </Link>
+      </div>
+    </div>
+  </div>
+
+
+
+  {/* المحتوى */}
+
+  {/* Scroll Indicator */}
+   <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
+    <button
+      onClick={() => scrollToSection('about-preview')}
+      className="text-white hover:text-white/80 transition-colors"
+    >
+      <ArrowDown className="w-8 h-8" />
+    </button>
+
+  </div>
+</section>
+
+
 
       {/* About Section */}
       <section id="about-preview" className="py-20 bg-background">
@@ -151,28 +171,31 @@ const Home: React.FC = () => {
     </div>
 
     {/* ديف الرؤية */}
-    <div
-      className="max-w-5xl bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-10 text-white animate-fade-in text-right md:ml-[200px] w-full md:w-1/2"
-      dir="rtl"
-      data-aos="fade-left"
-      data-aos-duration="1000"
-    >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-kufi mb-4 sm:mb-6 text-yellow-300 drop-shadow-lg text-center md:text-right">
-        {t("رؤيتنا", "Our Vision")}
-      </h2>
-      <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6">
-        {t(
-          "نسعى إلى الريادة في عالم المقاولات عبر تقديم حلول هندسية متكاملة ومستدامة، تجمع بين الجودة، الإبداع، والدقة في التنفيذ لنصنع مستقبلاً عمرانيًا يليق بوطننا.",
-          "We strive to lead the contracting world by offering integrated and sustainable engineering solutions that combine quality, creativity, and precision to build a better future."
-        )}
-      </p>
-      <p className="text-lg sm:text-xl font-semibold text-orange-300 mt-4 text-center md:text-right">
-        {t(
-          "الرئيس التنفيذي: المهندس محمد سعيد الجدي",
-          "CEO: Engineer Mohamed Saeid Al Jadi"
-        )}
-      </p>
-    </div>
+<div
+  className="mx-auto max-w-4xl lg:ml-56 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-white animate-fade-in text-right w-full md:w-3/4 lg:w-1/2"
+  dir="rtl"
+  data-aos="fade-left"
+  data-aos-duration="1000"
+>
+  <h2 className="text-3xl sm:text-4xl md:text-5xl font-kufi mb-4 sm:mb-6 text-yellow-300 drop-shadow-lg text-center">
+    {t("رؤيتنا", "Our Vision")}
+  </h2>
+
+  <p className="text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6 text-justify sm:text-right">
+    {t(
+      "نسعى إلى الريادة في عالم المقاولات عبر تقديم حلول هندسية متكاملة ومستدامة، تجمع بين الجودة، الإبداع، والدقة في التنفيذ لنصنع مستقبلاً عمرانيًا يليق بوطننا.",
+      "We strive to lead the contracting world by offering integrated and sustainable engineering solutions that combine quality, creativity, and precision to build a better future."
+    )}
+  </p>
+
+  <p className="text-lg sm:text-xl font-semibold text-orange-300 mt-4 text-center md:text-right">
+    {t(
+      "الرئيس التنفيذي: المهندس محمد سعيد الجدي",
+      "CEO: Engineer Mohamed Saeid Al Jadi"
+    )}
+  </p>
+</div>
+
   </div>
 
   <style>{`
@@ -259,7 +282,10 @@ const Home: React.FC = () => {
                   {t('الموقع', 'Location')}
                 </h3>
                 <p className="text-muted-foreground">
-                  {t('المنطقة الشرقية - الدمام، شارع الظهران، بجوار مركز الراية التجاري', 'Eastern Province - Dammam, Dhahran Street, near Al Raya Center')}
+                  {t(
+                        "المنطقة الشرقية - الدمام - حي مدينة العمال - شارع بلال بن رباح",
+    "Eastern Province - Dammam - Al-Omal District - Bilal Bin Rabah Street"
+)}
                 </p>
               </div>
               
