@@ -53,33 +53,34 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`text-lg font-medium transition-all duration-300 relative group ${
-                  isActive(item.path)
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
-                }`}
-              >
-                {t(item.labelAr, item.labelEn)}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    isActive(item.path) ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
-              </Link>
-            ))}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-elegant hover:shadow-soft transition-all duration-300 hover:scale-105"
-            >
-              <Globe className="w-5 h-5 animate-pulse-soft" />
-              <span className="font-medium">{lang === "ar" ? "EN" : "AR"}</span>
-            </button>
-          </div>
+          <div className="hidden md:flex items-center gap-8 rtl:gap-8">
+  {navItems.map((item) => (
+    <Link
+      key={item.path}
+      to={item.path}
+      className={`text-lg font-medium transition-all duration-300 relative group ${
+        isActive(item.path)
+          ? "text-primary"
+          : "text-foreground hover:text-primary"
+      }`}
+    >
+      {t(item.labelAr, item.labelEn)}
+      <span
+        className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+          isActive(item.path) ? "w-full" : "w-0 group-hover:w-full"
+        }`}
+      />
+    </Link>
+  ))}
+  <button
+    onClick={toggleLanguage}
+    className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-elegant hover:shadow-soft transition-all duration-300 hover:scale-105"
+  >
+    <Globe className="w-5 h-5 animate-pulse-soft" />
+    <span className="font-medium">{lang === "ar" ? "EN" : "AR"}</span>
+  </button>
+</div>
+
 
           {/* Mobile Menu Button */}
           <button
