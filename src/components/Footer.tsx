@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
       if (formData.image) {
         const fileName = `${Date.now()}_${formData.image.name}`;
         const { data, error } = await supabase.storage
-          .from("uploads") 
+          .from("uploads")
           .upload(fileName, formData.image);
 
         if (error) throw error;
@@ -44,8 +44,8 @@ const Footer: React.FC = () => {
       }
 
       await emailjs.send(
-        "service_fyvejxu", 
-        "template_qldbw3b", 
+        "service_fyvejxu",
+        "template_qldbw3b",
         {
           name: formData.name,
           phone: formData.phone,
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
           message: formData.message,
           image_url: imageUrl || "No image uploaded",
         },
-        "C3M0YROcBqpbbk2iC" 
+        "C3M0YROcBqpbbk2iC"
       );
 
       toast({
@@ -79,12 +79,12 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gradient-primary text-primary-foreground py-12">
+    <footer className="bg-gradient-primary text-primary-foreground py-6 md:py-12 mt-0 mb-0">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-4 gap-6 md:gap-12">
           {/* Form Section */}
-          <div className="md:col-span-2 bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
-            <h2 className="text-2xl md:text-3xl font-kufi mb-6 text-center">
+          <div className="md:col-span-2 bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg">
+            <h2 className="text-xl md:text-3xl font-kufi mb-6 text-center">
               {t("لطلب عرض سعر لمشروعك", "Request a Quote for Your Project")}
             </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -133,17 +133,16 @@ const Footer: React.FC = () => {
               />
 
               <input
-  type="file"
-  accept="image/*,application/pdf"
-  onChange={(e) =>
-    setFormData({
-      ...formData,
-      image: e.target.files?.[0] || null,
-    })
-  }
-  className="bg-white/10 border-white/20 text-white rounded-xl p-2 w-full"
-/>
-
+                type="file"
+                accept="image/*,application/pdf"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    image: e.target.files?.[0] || null,
+                  })
+                }
+                className="bg-white/10 border-white/20 text-white rounded-xl p-2 w-full"
+              />
 
               <Button
                 type="submit"
@@ -151,7 +150,9 @@ const Footer: React.FC = () => {
                 className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-3 flex items-center justify-center gap-2 rounded-xl transition-all duration-300 hover:scale-105"
               >
                 <Send className="w-5 h-5 animate-pulse-soft" />
-                {loading ? t("جارٍ الإرسال...", "Sending...") : t("إرسال", "Submit")}
+                {loading
+                  ? t("جارٍ الإرسال...", "Sending...")
+                  : t("إرسال", "Submit")}
               </Button>
             </form>
           </div>
@@ -188,21 +189,18 @@ const Footer: React.FC = () => {
                     {t("العنوان", "Address")}
                   </h4>
                   <p>
-  {t(
-    "المنطقة الشرقية - الدمام - حي مدينة العمال - شارع بلال بن رباح",
-    "Eastern Province - Dammam - Al-Omal District - Bilal Bin Rabah Street"
-  )}
-</p>
-
+                    {t(
+                      "المنطقة الشرقية - الدمام - حي مدينة العمال - شارع بلال بن رباح",
+                      "Eastern Province - Dammam - Al-Omal District - Bilal Bin Rabah Street"
+                    )}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 mt-1" />
                 <div>
-                  <h4 className="font-semibold mb-1">
-                    {t("الهاتف", "Phone")}
-                  </h4>
+                  <h4 className="font-semibold mb-1">{t("الهاتف", "Phone")}</h4>
                   <p>+0500912995</p>
                   <p>+966 500 912 995</p>
                 </div>
@@ -221,7 +219,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-6 text-center text-sm opacity-80">
+        <div className="border-t border-white/20 mt-8 md:mt-12 pt-4 md:pt-6 text-center text-sm opacity-80">
           <p>
             © 2025{" "}
             {t(

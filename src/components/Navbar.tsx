@@ -28,25 +28,25 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 w-full mt-5 transition-all duration-300 z-50">
+    <nav className="fixed top-0 w-full transition-all duration-300 z-50 md:mt-5">
       <div
-        className={`container mx-auto px-4 py-4 transition-all duration-300 border border-[#680F67] shadow-lg 
+        className={`container mx-auto px-3 sm:px-4 py-2 sm:py-3 transition-all duration-300 border border-[#680F67] shadow-lg 
           ${isScrolled ? "bg-background/95 backdrop-blur-sm" : "bg-background/40 backdrop-blur-lg"} 
           md:rounded-full rounded-none`}
       >
         <div className="flex items-center justify-between">
           {/* Logo + Title */}
-          <div className="flex items-center space-x-4 rtl:space-x-reverse group">
+          <div className="flex items-center space-x-3 rtl:space-x-reverse group">
             <img
               src={logo}
               alt="Diwan Al Khaleej"
-              className="h-12 w-12 object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
+              className="h-10 w-10 sm:h-12 sm:w-12 object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
             />
             <div>
-              <h1 className="text-lg md:text-xl font-kufi text-primary transition-colors duration-300">
+              <h1 className="text-base sm:text-lg md:text-xl font-kufi text-primary transition-colors duration-300">
                 {t("مؤسسة ديوان الخليج", "Diwan Al Khaleej")}
               </h1>
-              <p className="text-xs md:text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 {t("للمقاولات العامة", "General Contracting")}
               </p>
             </div>
@@ -54,33 +54,32 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 rtl:gap-8">
-  {navItems.map((item) => (
-    <Link
-      key={item.path}
-      to={item.path}
-      className={`text-lg font-medium transition-all duration-300 relative group ${
-        isActive(item.path)
-          ? "text-primary"
-          : "text-foreground hover:text-primary"
-      }`}
-    >
-      {t(item.labelAr, item.labelEn)}
-      <span
-        className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-          isActive(item.path) ? "w-full" : "w-0 group-hover:w-full"
-        }`}
-      />
-    </Link>
-  ))}
-  <button
-    onClick={toggleLanguage}
-    className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-elegant hover:shadow-soft transition-all duration-300 hover:scale-105"
-  >
-    <Globe className="w-5 h-5 animate-pulse-soft" />
-    <span className="font-medium">{lang === "ar" ? "EN" : "AR"}</span>
-  </button>
-</div>
-
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-lg font-medium transition-all duration-300 relative group ${
+                  isActive(item.path)
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
+                }`}
+              >
+                {t(item.labelAr, item.labelEn)}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    isActive(item.path) ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </Link>
+            ))}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-elegant hover:shadow-soft transition-all duration-300 hover:scale-105"
+            >
+              <Globe className="w-5 h-5 animate-pulse-soft" />
+              <span className="font-medium">{lang === "ar" ? "EN" : "AR"}</span>
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -93,14 +92,14 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden mt-3 pb-3">
+            <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block py-2 text-lg font-medium transition-colors duration-300 hover:text-primary ${
+                  className={`block py-1.5 text-base font-medium transition-colors duration-300 hover:text-primary ${
                     isActive(item.path)
                       ? "text-primary font-semibold"
                       : "text-foreground"
@@ -111,7 +110,7 @@ const Navbar: React.FC = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors"
               >
                 <Globe className="w-5 h-5" />
                 <span className="font-medium">
