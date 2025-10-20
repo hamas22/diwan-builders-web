@@ -24,7 +24,7 @@ const handleLogin = async (e: React.FormEvent) => {
       .from('admin_users')
       .select('id, email, password_hash')
       .eq('email', email)
-      .maybeSingle(); // بديل أفضل من single
+      .maybeSingle(); 
 
     console.log('adminUser:', adminUser, 'error:', error);
 

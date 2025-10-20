@@ -146,7 +146,6 @@ const Home: React.FC = () => {
   }}
 >
   <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
-    {/* الصورة */}
     <div
       className="relative group flex justify-center md:justify-start w-full md:w-1/2"
       data-aos="fade-up"

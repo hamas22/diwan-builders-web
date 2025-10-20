@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logoo.png";
 import emailjs from "emailjs-com";
-import { supabase } from "@/lib/supabaseClient"; // ✅ تأكدي من المسار
+import { supabase } from "@/lib/supabaseClient"; 
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -44,8 +44,8 @@ const Footer: React.FC = () => {
       }
 
       await emailjs.send(
-        "service_fyvejxu", // ID الخدمة
-        "template_qldbw3b", // ID التمبلت
+        "service_fyvejxu", 
+        "template_qldbw3b", 
         {
           name: formData.name,
           phone: formData.phone,
