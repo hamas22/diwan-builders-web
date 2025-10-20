@@ -154,19 +154,19 @@ VALUES (
   'Engineer Khaled Munib'
 );
 
-INSERT INTO public.contact_info (
-  address_ar, address_en, phone1, phone2, email, 
-  working_hours_ar, working_hours_en
-)
-VALUES (
-  'قطر – شارع الفروسية، مبنى رقم 292 – الدور الأول مكتب 8',
-  'Qatar - Al Furousiya Street, Building 292 - 1st Floor Office 8',
-  '+974 55664404',
-  '+974 77776682',
-  'info@aatgco.com',
-  'السبت - الخميس: 8:00 ص - 6:00 م',
-  'Saturday - Thursday: 8:00 AM - 6:00 PM'
-);
+-- INSERT INTO public.contact_info (
+--   address_ar, address_en, phone1, phone2, email, 
+--   working_hours_ar, working_hours_en
+-- )
+-- VALUES (
+--   'قطر – شارع الفروسية، مبنى رقم 292 – الدور الأول مكتب 8',
+--   'Qatar - Al Furousiya Street, Building 292 - 1st Floor Office 8',
+--   '+974 55664404',
+--   '+974 77776682',
+--   'info@aatgco.com',
+--   'السبت - الخميس: 8:00 ص - 6:00 م',
+--   'Saturday - Thursday: 8:00 AM - 6:00 PM'
+-- );
 
 INSERT INTO public.site_settings (site_name_ar, site_name_en)
 VALUES ('ديوان الخليج للمقاولات العامة', 'Diwan Al Khaleej General Contracting');

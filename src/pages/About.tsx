@@ -133,8 +133,8 @@ const About: React.FC = () => {
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
                 {t(
-                  'تقديم خدمات مقاولات وبناء عالية الجودة تتجاوز توقعات عملائنا، مع الحفاظ على أعلى معايير السلامة والاستدامة البيئية، والمساهمة في تطوير البنية التحتية لدولة قطر.',
-                  'To provide high-quality contracting and construction services that exceed our customers\' expectations, while maintaining the highest standards of safety and environmental sustainability, and contributing to the development of Qatar\'s infrastructure.'
+                  'تقديم خدمات مقاولات وبناء عالية الجودة تتجاوز توقعات عملائنا، مع الحفاظ على أعلى معايير السلامة والاستدامة البيئية، والمساهمة في تطوير البنية التحتية  .',
+                  'To provide high-quality contracting and construction services that exceed our customers\' expectations, while maintaining the highest standards of safety and environmental sustainability, and contributing to the development .'
                 )}
               </p>
             </Card>
