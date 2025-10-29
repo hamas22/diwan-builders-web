@@ -1,111 +1,80 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
-interface CounterItemProps {
-  target: number;
-  label: string;
-  suffix: string;
-}
+import jotun from '@/assets/jotun.png';
+import jazeera from '@/assets/jazeera2.png';
+import partner2 from '@/assets/benaa.png';
+import partner3 from '@/assets/tawn.png';
+import partner4 from '@/assets/medad.png';
+import partner5 from '@/assets/inovest.png';
+import partner6 from '@/assets/group.png';
 
-const CounterItem: React.FC<CounterItemProps> = ({ target, label, suffix }) => {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+const partners = [
+  { img: jotun },
+  { img: jazeera },
+  { img: partner2 },
+  { img: partner3 },
+  { img: partner4 },
+  { img: partner5 },
+  { img: partner6 },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const duration = 2000;
-    const increment = target / (duration / 16);
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [isVisible, target]);
-
-  return (
-    <div ref={ref} className="text-center animate-counter">
-      <div className="text-5xl md:text-6xl font-bold text-white mb-2 animate-glow">
-        {count}{suffix}
-      </div>
-      <p className="text-lg text-white/90">{label}</p>
-    </div>
-  );
-};
-
-const CounterSection: React.FC = () => {
+const PartnerSection: React.FC = () => {
   const { t } = useLanguage();
 
-  const counters = [
-    { target: 20, suffix: '+', labelAr: 'مشاريع تم تسليمها', labelEn: 'Projects Delivered' },
-    { target: 14, suffix: '', labelAr: 'سنة خبرة', labelEn: 'Years of Experience' },
-    { target: 30, suffix: '', labelAr: 'مشروع تصميم خارجي', labelEn: 'Exterior Design Projects' },
-    { target: 95, suffix: '+', labelAr: 'موظف موارد بشرية', labelEn: 'HR Employees' },
-  ];
-
   return (
-    <div className="parallax-section bg-fixed bg-cover bg-center relative">
-      <div 
-        className="absolute inset-0 bg-gradient-hero"
-        style={{
-          backgroundImage: `linear-gradient(180deg, hsl(23 50% 28% / 0.9), hsl(23 50% 20% / 0.95)), url('/images/parallax-bg.jpg')`
-        }}
-      />
-      <div className="container mx-auto px-4 relative z-10 py-20">
-        <h2 className="text-4xl md:text-5xl font-kufi text-white text-center mb-12">
-          {t('إنجازات مؤسستنا', 'Our Achievements')}
-        </h2>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          {counters.map((counter, index) => (
-            <CounterItem
-              key={index}
-              target={counter.target}
-              suffix={counter.suffix}
-              label={t(counter.labelAr, counter.labelEn)}
-            />
+    <section className="relative py-8 overflow-hidden">
+      <div className="container mx-auto relative px-4 py-6 rounded-[2rem] border-[4px] border-[#c99737] bg-gradient-to-br from-[#3a260f] via-[#4a2f13] to-[#3a260f] shadow-[0_0_25px_rgba(201,151,55,0.6)] backdrop-blur-sm">
+
+        <div className="text-center mb-10">
+          <div className="inline-block px-6 py-3 rounded-xl border-2 border-[#c99737] shadow-[0_0_20px_rgba(201,151,55,0.4)] bg-[#4a2f13]/70 backdrop-blur-md">
+            <h2 className="text-2xl md:text-4xl font-kufi text-white font-bold tracking-wide drop-shadow-md">
+              {t('شركاؤنا', 'Our Partners')}
+            </h2>
+          </div>
+        </div>
+
+        <div className="flex justify-center gap-10 mb-14 flex-wrap">
+          {partners.slice(0, 2).map((partner, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group bg-white/80 rounded-2xl border-2 border-[#c99737]/70 shadow-[0_0_20px_rgba(201,151,55,0.4)] hover:shadow-[0_0_25px_rgba(201,151,55,0.7)] p-4 w-[150px] md:w-[170px] flex items-center justify-center hover:scale-110 transition-all duration-500"
+            >
+              <img
+                src={partner.img}
+                alt="Partner logo"
+                className="w-full h-full object-contain rounded-xl transition-transform duration-500 group-hover:scale-125"
+              />
+            </motion.div>
           ))}
         </div>
-        
-        <p className="text-center text-white/90 max-w-3xl mx-auto text-lg leading-relaxed">
-          {t(
-            'نؤمن بقدرتنا على تحقيق مستوى متميز في أسواق التصميم والبناء عبر تطبيق معايير الجودة، الاحترافية، والمصداقية بما يضمن لنا المنافسة محليًا وإقليميًا.',
-            'We believe in our ability to achieve excellence in design and construction markets through applying quality standards, professionalism, and credibility, ensuring our competitiveness locally and regionally.'
-          )}
-        </p>
+
+        <div className="flex justify-center flex-wrap gap-8 md:gap-12">
+          {partners.slice(2).map((partner, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group bg-white/100 rounded-xl border-2 border-[#c99737]/70 shadow-[0_0_15px_rgba(201,151,55,0.4)] hover:shadow-[0_0_25px_rgba(201,151,55,0.7)] p-4 w-[110px] md:w-[130px] flex items-center justify-center hover:scale-110 transition-all duration-500"
+            >
+              <img
+                src={partner.img}
+                alt="Partner logo"
+                className="w-full h-full object-contain rounded-lg group-hover:scale-125 transition-transform duration-500"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default CounterSection;
+export default PartnerSection;

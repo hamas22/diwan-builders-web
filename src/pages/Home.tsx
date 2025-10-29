@@ -56,7 +56,7 @@ const Home: React.FC = () => {
             : 'text-1xl md:text-4xl lg:text-4xl leading-tight'
         }`}
       >
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[150px] bg-[#c97f23] -z-20"></span>
+<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[90px] sm:h-[110px] md:h-[130px] lg:h-[150px] bg-[#c97f23] -z-20"></span>
 
         {t('ديوان الخليج للمقاولات العامة', 'Diwan Al Khaleej General Contracting')}
       </h1>
@@ -132,7 +132,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* <CounterSection /> */}
       <ServicesSlider />
 
       {/* Vision Section */}
@@ -256,6 +255,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <CounterSection />
+
 
       {/* Contact Section */}
       <section id="contact-preview" className="py-20 bg-background">
